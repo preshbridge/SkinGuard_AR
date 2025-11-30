@@ -1,0 +1,38 @@
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Aa]ssets/AssetStoreTools*
+
+# Visual Studio cache
+.vscode/
+.vs/
+*.csproj
+*.sln
+*.user
+*.suo
+
+# Unity auto-generated files
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.opendb
+
+# Crash and error logs
+sysinfo.txt
+
+# Android keystore files
+*.jks
+*.keystore
+
+# Ignore addressables build
+[Aa]ssets/AddressableAssetsData/*/*/catalog.json
+
+# Ignore build artifact data
+Build*/**
