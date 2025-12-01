@@ -4,50 +4,64 @@ using UnityEngine.SceneManagement;
 
 public class ResultDisplay : MonoBehaviour
 {
-    // Use regular UI.Image (not RawImage) for Sprite support
     public Text resultText;
     public Text tipsText;
-    public Image resultImage; // ← Image, not RawImage
+    public RawImage resultImage;
 
-    // Assign Sprites in Inspector (PNGs must be set to Sprite type)
-    public Sprite healthySprite;
-    public Sprite acneSprite;
-    public Sprite rashSprite;
+    public Texture2D healthyTexture;
+    public Texture2D acneTexture;
+    public Texture2D rashTexture;
+
+    public Button readMoreButton;
+    public Button backButton;
 
     void Start()
     {
-        string condition = PlayerPrefs.GetString("SkinResult", "Healthy");
+        string result = PlayerPrefs.GetString("SkinResult", "Healthy");
 
-        // Always assign text — even if fields are missing, this won't crash
         if (resultText != null)
-        {
-            resultText.text = condition switch
+            resultText.text = result switch
             {
                 "Acne" => "Acne Detected",
                 "Rash" => "Skin Rash Detected",
                 _ => "Healthy Skin!"
             };
-        }
 
         if (tipsText != null)
-        {
-            tipsText.text = condition switch
+            tipsText.text = result switch
             {
                 "Acne" => "• Wash face twice daily\n• Avoid touching your face\n• Use non-comedogenic products",
                 "Rash" => "• Avoid scratching the area\n• Use fragrance-free moisturizers\n• Consult a doctor if it spreads",
                 _ => "• Keep moisturizing\n• Stay hydrated\n• Protect from sun exposure"
             };
-        }
 
         if (resultImage != null)
-        {
-            resultImage.sprite = condition switch
+            resultImage.texture = result switch
             {
-                "Acne" => acneSprite,
-                "Rash" => rashSprite,
-                _ => healthySprite
+                "Acne" => acneTexture,
+                "Rash" => rashTexture,
+                _ => healthyTexture
             };
+
+        if (readMoreButton != null)
+        {
+            readMoreButton.onClick.RemoveAllListeners();
+            readMoreButton.onClick.AddListener(OnReadMorePressed);
         }
+
+        if (backButton != null)
+        {
+            backButton.onClick.RemoveAllListeners();
+            backButton.onClick.AddListener(OnBackToHome);
+        }
+    }
+
+    public void OnReadMorePressed()
+    {
+        string condition = PlayerPrefs.GetString("SkinResult", "Healthy");
+        PlayerPrefs.SetString("InfoCondition", condition);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("InfoScene");
     }
 
     public void OnBackToHome()

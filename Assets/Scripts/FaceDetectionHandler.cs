@@ -1,43 +1,58 @@
 ﻿using UnityEngine;
-using UnityEngine.XR.ARFoundation;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class FaceDetectionHandler : MonoBehaviour
 {
+    [Header("UI")]
+    public RawImage cameraPreview;
     public GameObject scanButton;
     public GameObject backButton;
 
-    private ARFaceManager faceManager;
+    private WebCamTexture webcam;
     private bool hasScanned = false;
 
     void Start()
     {
-        scanButton?.SetActive(false);
-        faceManager = FindObjectOfType<ARFaceManager>();
-        if (faceManager == null)
-        {
-            Debug.LogError("ARFaceManager missing! Ensure it's on AR Session Origin.");
-        }
+        // 🔁 Always reset when scene loads
+        hasScanned = false;
+        if (scanButton != null)
+            scanButton.SetActive(false);
+        SetupCamera();
     }
 
-    void Update()
+    void SetupCamera()
     {
-        if (faceManager == null) return;
-
-        // Count actively tracked faces
-        int faceCount = 0;
-        foreach (var face in faceManager.trackables)
+        WebCamDevice[] devices = WebCamTexture.devices;
+        if (devices.Length == 0)
         {
-            if (face.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
-                faceCount++;
+            Invoke(nameof(GoToHome), 2f);
+            return;
         }
 
-        bool hasFace = faceCount > 0;
+        string camName = "";
+        foreach (var device in devices)
+        {
+            if (device.isFrontFacing)
+            {
+                camName = device.name;
+                break;
+            }
+        }
+        if (string.IsNullOrEmpty(camName))
+            camName = devices[0].name;
 
-        if (hasFace && !hasScanned)
-            scanButton?.SetActive(true);
-        else if (!hasFace)
-            scanButton?.SetActive(false);
+        webcam = new WebCamTexture(camName, 1280, 720);
+        cameraPreview.texture = webcam;
+        webcam.Play();
+
+        Invoke(nameof(ShowScanButton), 2f);
+    }
+
+    void ShowScanButton()
+    {
+        if (!hasScanned && scanButton != null)
+            scanButton.SetActive(true);
     }
 
     public void OnScanButtonPressed()
@@ -45,11 +60,12 @@ public class FaceDetectionHandler : MonoBehaviour
         if (hasScanned) return;
         hasScanned = true;
 
-        string condition = Random.value switch
+        float r = Random.value;
+        string condition = r switch
         {
-            < 0.6f => "Healthy",
-            < 0.9f => "Acne",
-            _ => "Rash"
+            < 0.5f => "Acne",
+            < 0.8f => "Rash",
+            _ => "Healthy"
         };
 
         PlayerPrefs.SetString("SkinResult", condition);
@@ -59,6 +75,19 @@ public class FaceDetectionHandler : MonoBehaviour
 
     public void OnBackButtonPressed()
     {
+        if (webcam != null && webcam.isPlaying)
+            webcam.Stop();
         SceneManager.LoadScene("HomeScene");
+    }
+
+    void GoToHome()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
+
+    void OnDestroy()
+    {
+        if (webcam != null && webcam.isPlaying)
+            webcam.Stop();
     }
 }

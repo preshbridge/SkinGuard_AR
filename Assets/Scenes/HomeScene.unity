@@ -122,6 +122,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &84837001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 84837003}
+  - component: {fileID: 84837002}
+  m_Layer: 0
+  m_Name: HomeMenuController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &84837002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84837001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea3d0a8a99ee80c419b21e2f0b071f84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &84837003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84837001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 240, y: 400, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &103072723
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,8 +202,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.3, y: -41}
-  m_SizeDelta: {x: 151.69, y: 43.9291}
+  m_AnchoredPosition: {x: -31.659, y: -278}
+  m_SizeDelta: {x: 319.502, y: 112.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &103072725
 MonoBehaviour:
@@ -205,9 +249,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2036138402}
-        m_TargetAssemblyTypeName: SkinResultManager, Assembly-CSharp
-        m_MethodName: StartBodyScan
+      - m_Target: {fileID: 84837002}
+        m_TargetAssemblyTypeName: HomeMenuHandler, Assembly-CSharp
+        m_MethodName: GoToScanScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -339,8 +383,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -425,8 +469,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7, y: 30.5}
-  m_SizeDelta: {x: 164.63, y: 41.2308}
+  m_AnchoredPosition: {x: -11, y: -57}
+  m_SizeDelta: {x: 297.074, y: 128.363}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1444146090
 MonoBehaviour:
@@ -472,9 +516,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2036138402}
-        m_TargetAssemblyTypeName: SkinResultManager, Assembly-CSharp
-        m_MethodName: StartFaceScan
+      - m_Target: {fileID: 84837002}
+        m_TargetAssemblyTypeName: HomeMenuHandler, Assembly-CSharp
+        m_MethodName: GoToScanScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -558,8 +602,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.3, y: -134}
-  m_SizeDelta: {x: 151.69, y: 43.9291}
+  m_AnchoredPosition: {x: -31.66, y: -589}
+  m_SizeDelta: {x: 319.51, y: 141.181}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562845968
 MonoBehaviour:
@@ -605,9 +649,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2036138402}
-        m_TargetAssemblyTypeName: SkinResultManager, Assembly-CSharp
-        m_MethodName: OpenAbout
+      - m_Target: {fileID: 84837002}
+        m_TargetAssemblyTypeName: HomeMenuHandler, Assembly-CSharp
+        m_MethodName: GoToAboutScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -739,8 +783,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1073,8 +1117,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1287,50 +1331,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &2036138401
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2036138403}
-  - component: {fileID: 2036138402}
-  m_Layer: 0
-  m_Name: SkinResultManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2036138402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036138401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7169a528484dcd4482af4d6d4f8fbcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &2036138403
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036138401}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 240, y: 400, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2120302534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,4 +1472,4 @@ SceneRoots:
   - {fileID: 1817718457}
   - {fileID: 1771453182}
   - {fileID: 1923664926}
-  - {fileID: 2036138403}
+  - {fileID: 84837003}
